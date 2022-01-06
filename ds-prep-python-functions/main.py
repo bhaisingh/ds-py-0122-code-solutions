@@ -1,8 +1,10 @@
-bool_to_int = lambda value: 1 if value else 0
+#bool_to_int = lambda value: 1 if value else 0
+bool_to_int = lambda value: int(value == True)
 print('bool_to_int(True) ', bool_to_int(True))
 print('bool_to_int(False) ', bool_to_int(False))
 
-get_smaller = lambda a, b: a if a < b else b
+#get_smaller = lambda a, b: a if a < b else b
+get_smaller = lambda a, b: min(a,b)
 print('get_smaller(16, 31) ', get_smaller(16, 31))
 print('get_smaller(253, 223) ', get_smaller(253, 223))
 
