@@ -22,7 +22,7 @@ elif student_2_score >= 70 and student_2_score < 80:
     letter_grade = 'C'
 elif student_2_score >= 80 and student_2_score < 90:
     letter_grade = 'B'
-elif student_2_score >= 90 and student_2_score <= 100:
+elif student_2_score >= 90 and student_2_score < 100:
     letter_grade = 'A'
 elif student_2_score >= 100:
     letter_grade = 'A+'
