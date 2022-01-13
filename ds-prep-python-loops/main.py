@@ -6,15 +6,17 @@ print(row)
 
 value_list = [1, 1, 2, 3, 5, 8, 13, 21, 34]
 for value in value_list:
-    print(str(value) + '\n')
+    print(str(value))
 
-index_list = ''
+index_list = []
 for index in range(len(value_list)):
-    print(index, value_list[index])
+    index_list.insert(0,index)
 
-for value in value_list:
+print('index_list:', index_list)
+
+for value in index_list:
     if value % 2 != 0:
-        value_list.remove(value)
+        value_list.pop(value)
 
 print('value_list:', value_list)
 
@@ -28,9 +30,9 @@ for vowel in vowels:
 print('parts_of_the_big_letter:', parts_of_the_big_letter)
 
 player_positions = {
-    "Who": "1B",
-    "What": "2B",
-    "I Don't Know": "3B",
+    'Who': '1B',
+    'What': '2B',
+    "I Don't Know": '3B',
     "Why": "LF",
     "Because": "CF",
     "Tomorrow": "P",
@@ -38,14 +40,15 @@ player_positions = {
     "I Don't Care": "SS"
 }
 
-players = ''
+players = []
 for keys in player_positions:
-    players += keys + ': ' + player_positions[keys] + '\n'
+    players = players + [keys]
 print('players:', players)
 
-positions = ''
-for player in player_positions.values():
-    positions += player + '\n'
+positions = {*()}
+for position in player_positions.values():
+  positions.add(position)
+
 print('positions:', positions)
 
 for key, value in player_positions.items():
