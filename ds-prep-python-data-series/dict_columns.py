@@ -42,23 +42,19 @@ def first_five_element_series(unemployment_rates):
 
 print('first_five_element_series: ', first_five_element_series(unemployment_rates))
 
-def check_include_2000(unemployment_rates):
+def check_include_2000_2010(unemployment_rates):
     res_2000 = False
+    res_2010 = False
     for i in unemployment_rates['year']:
         if 2000 == i:
             res_2000 = True
-    return res_2000
-
-print('check_include_2000: ', check_include_2000(unemployment_rates))
-
-def check_include_2010(unemployment_rates):
-    res_2010 = False
-    for i in unemployment_rates['year']:
         if 2010 == i:
             res_2010 = True
-    return res_2010
+    return res_2000, res_2010
 
-print('check_include_2010: ', check_include_2010(unemployment_rates))
+res_2000, res_2010 = check_include_2000_2010(unemployment_rates)
+print('check_include_2000: ', res_2000, 'check_include_2010: ', res_2010)
+
 
 def unemployment_rate_latest_year(label_order, unemployment_rates):
   latest_year = label_order[-1]
@@ -95,10 +91,15 @@ def largest_unemployment_rate(unemployment_rates):
 print('largest_unemployment_rate: ', largest_unemployment_rate(unemployment_rates))
 
 def employment_rate_series(unemployment_rates):
-    employment_rate = {}
-    for keys, value in unemployment_rates.items():
-      employment_rate[keys] = value
-    return employment_rate
+    employment_rates = {}
+    employment_rate_items = []
+    for i in unemployment_rates['unemployment_rate']:
+      employment_rate_items.append(100 - i)
+
+    employment_rates['year'] = unemployment_rates['year']
+    employment_rates['employment_rate'] = employment_rate_items
+
+    return employment_rates
 
 print('employment_rate_series: ', employment_rate_series(unemployment_rates))
 
@@ -106,9 +107,8 @@ def unemployment_rate_atleast_7(unemployment_rates):
   unemployment_rate_atleast_7 = {}
   year_list = []
   rate_list = []
-  for element in unemployment_rates['unemployment_rate']:
+  for index, element in enumerate(unemployment_rates['unemployment_rate']):
     if element >= 7:
-      index = unemployment_rates['unemployment_rate'].index(element)
       year_list.append(unemployment_rates['year'][index])
       rate_list.append(unemployment_rates['unemployment_rate'][index])
   unemployment_rate_atleast_7['year'] = year_list

@@ -43,23 +43,19 @@ def first_five_element_series(unemployment_rates):
 
 print('first_five_element_series: ', first_five_element_series(unemployment_rates))
 
-def check_include_2000(unemployment_rates):
+def check_include_2000_2010(unemployment_rates):
     res_2000 = False
+    res_2010 = False
     for i in unemployment_rates:
         if 2000 == i['year']:
             res_2000 = True
-    return res_2000
-
-print('check_include_2000: ', check_include_2000(unemployment_rates))
-
-def check_include_2010(unemployment_rates):
-    res_2010 = False
-    for i in unemployment_rates:
         if 2010 == i['year']:
             res_2010 = True
-    return res_2010
+    return res_2000, res_2010
 
-print('check_include_2010: ', check_include_2010(unemployment_rates))
+res_2000, res_2010 = check_include_2000_2010(unemployment_rates)
+print('check_include_2000: ', res_2000, 'check_include_2010: ', res_2010)
+
 
 def unemployment_rate_latest_year(label_order, unemployment_rates):
     for element in unemployment_rates:
@@ -96,10 +92,10 @@ def largest_unemployment_rate(unemployment_rates):
 print('largest_unemployment_rate: ', largest_unemployment_rate(unemployment_rates))
 
 def employment_rate_series(unemployment_rates):
-    employment_rate = []
+    employment_rates = []
     for element in unemployment_rates:
-      employment_rate.append({'employment_rate': element['unemployment_rate'], 'year': element['year']})
-    return employment_rate
+      employment_rates.append({'employment_rate': 100 - element['unemployment_rate'], 'year': element['year']})
+    return employment_rates
 
 print('employment_rate_series: ', employment_rate_series(unemployment_rates))
 
